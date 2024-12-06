@@ -1,0 +1,46 @@
+.theme-wine .navbar {
+    background-color: #6D0C2E; }
+  
+  .theme-wine .navbar-brand {
+    color: #fff; }
+    .theme-wine .navbar-brand:hover {
+      color: #fff; }
+    .theme-wine .navbar-brand:active {
+      color: #fff; }
+    .theme-wine .navbar-brand:focus {
+      color: #fff; }
+  
+  .theme-wine .nav > li > a {
+    color: #fff; }
+    .theme-wine .nav > li > a:hover {
+      background-color: transparent; }
+    .theme-wine .nav > li > a:focus {
+      background-color: transparent; }
+  
+  .theme-wine .nav .open > a {
+    background-color: transparent; }
+    .theme-wine .nav .open > a:hover {
+      background-color: transparent; }
+    .theme-wine .nav .open > a:focus {
+      background-color: transparent; }
+  
+  .theme-wine .bars {
+    color: #fff; }
+  
+  .theme-wine .sidebar .menu .list li.active {
+    background-color: transparent; }
+    .theme-wine .sidebar .menu .list li.active > :first-child i, .theme-red .sidebar .menu .list li.active > :first-child span {
+      color: #6D0C2E; }
+  
+  .theme-wine .sidebar .menu .list .toggled {
+    background-color: transparent; }
+  
+  .theme-wine .sidebar .menu .list .ml-menu {
+    background-color: transparent; }
+  
+  .theme-wine .sidebar .legal {
+    background-color: #fff; }
+    .theme-wine .sidebar .legal .copyright a {
+      color: #6D0C2E !important; }
+  
+  
