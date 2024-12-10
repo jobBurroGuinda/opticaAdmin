@@ -2,6 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:replace="layouts/head :: header('Nuevo paciente')"> .. </div>
 <body>
+<br>
+<a th:href="@{/}"><h2>Regresar al inicio</h2></a>
+<br/>
 <h1>Create Patient</h1>
 <form action="#" th:action="@{/}" th:object="${patient}" method="post">
   <label>Name:</label>

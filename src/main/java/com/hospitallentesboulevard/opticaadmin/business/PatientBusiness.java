@@ -9,6 +9,7 @@ public interface PatientBusiness {
 
     List<Patient> findAll();
     List<PatientView> findAllPatientView();
+    List<PatientView> findAllPatientViewByPatient(String name);
     Patient findById(String id);
     Patient save(Patient patient);
     Patient update(String id, Patient patient);

@@ -2,6 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:replace="layouts/head :: header('Editar graduación')"> .. </div>
 <body>
+<br>
+<a th:href="@{/}"><h2>Regresar al inicio</h2></a>
+<br/>
 <h1 th:text="'Modificar graduación del el paciente ' + ${prescription.patient.getFullName()}">Edit Prescription</h1>
 <form action="#" th:action="@{/graduaciones/actualizar/{id}(id=${prescription.id})}" th:object="${prescription}" method="post">
   <label>Right Eye:</label>

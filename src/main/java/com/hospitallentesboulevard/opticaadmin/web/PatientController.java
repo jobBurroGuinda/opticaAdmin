@@ -25,6 +25,19 @@ public class PatientController {
         return "patients/list";
     }
 
+    @GetMapping("/buscar")
+    public String findByNameOrLastName(@RequestParam("inputFindNamePatient") String name, Model model){
+        List<PatientView> patients;
+        if (name.isBlank() || name.isEmpty()) {
+            patients = patientBusiness.findAllPatientView();
+        }
+        else {
+            patients = patientBusiness.findAllPatientViewByPatient(name);
+        }
+        model.addAttribute("patients", patients);
+        return "patients/list";
+    }
+
     @GetMapping("/nuevo")
     public String createPatientForm(Model model) {
         model.addAttribute("patient", new Patient());

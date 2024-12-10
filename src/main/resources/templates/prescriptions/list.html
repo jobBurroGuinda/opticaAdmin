@@ -2,6 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:replace="layouts/head :: header('Graduaciones')"> .. </div>
 <body>
+<br>
+<a th:href="@{/}"><h2>Regresar al inicio</h2></a>
+<br/>
 <!--<h1 th:text="'Graduaciones del paciente ' + ${patient.getFullName()}"></h1>-->
 <!--<a th:href="@{/graduaciones/nueva/paciente/{patient_id}(patient_id=${patient.id})}">Create New Prescription</a>-->
 <table>

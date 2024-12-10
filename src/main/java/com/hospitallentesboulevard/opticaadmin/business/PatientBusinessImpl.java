@@ -31,6 +31,17 @@ public class PatientBusinessImpl implements PatientBusiness {
     }
 
     @Override
+    public List<PatientView> findAllPatientViewByPatient(String name) {
+        List<PatientView> allPatients = patientViewRepository.findAll();
+        // Filter the patients based on the name or last name containing the specified substring
+        List<PatientView> patientsFiltered = allPatients.stream()
+                .filter(patient -> patient.getName().toLowerCase().contains(name.toLowerCase()) ||
+                        patient.getLastName().toLowerCase().contains(name.toLowerCase()))
+                .toList();
+        return patientsFiltered;
+    }
+
+    @Override
     public Patient findById(String id) {
         return patientRepository.findById(id).orElse(null);
     }

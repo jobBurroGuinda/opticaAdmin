@@ -2,8 +2,16 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
   <div th:replace="layouts/head :: header('Pacientes')"> .. </div>
   <body>
+  <br>
+  <a th:href="@{/}"><h2>Regresar al inicio</h2></a>
+  <br/>
     <h1>Pacientes</h1>
     <a th:href="@{/nuevo}">Registrar nuevo paciente</a>
+    <form th:action="@{/buscar}" method="get"><br>
+      <label for="inputFindNamePatient">Buscar paciente</label>
+      <input type="text" name="inputFindNamePatient" id="inputFindNamePatient" />
+      <button type="submit">Buscar</button>
+    </form>
     <table>
       <tr>
         <th>Nombre</th>
