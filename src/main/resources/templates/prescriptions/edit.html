@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="layouts/head :: header('Editar graduación')"> .. </div>
 <body>
-$END$
+<h1 th:text="'Modificar graduación del el paciente ' + ${prescription.patient.getFullName()}">Edit Prescription</h1>
+<form action="#" th:action="@{/graduaciones/actualizar/{id}(id=${prescription.id})}" th:object="${prescription}" method="post">
+  <label>Right Eye:</label>
+  <input type="text" th:field="*{rightEye}"/>
+  <label>Left Eye:</label>
+  <input type="text" th:field="*{leftEye}"/>
+  <label>Add:</label>
+  <input type="text" th:field="*{add}"/>
+  <label for="observations">Description:</label>
+  <textarea id="observations" name="observations" rows="4" cols="50" th:field="*{observations}"></textarea>
+  <input type="hidden" th:field="*{patient.id}" required/>
+  <button type="submit">Update</button>
+</form>
+<a th:href="@{/graduaciones/paciente/{id}(id=${prescription.patient.id})}">Cancel</a>
+
+<div th:replace="layouts/scripts :: scripts"></div>
 </body>
 </html>

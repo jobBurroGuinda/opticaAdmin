@@ -27,7 +27,12 @@ public class Prescription {
     @Column(length = 30)
     private String add = "";
 
-    private Date date = new Date();
+    @Column(length = 1000)
+    private String observations = "";
+
+    private Date dateCreation = new Date();
+
+    private Date dateLastUpdate = new Date();
 
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)

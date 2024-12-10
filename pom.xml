@@ -28,6 +28,7 @@
     </scm>
     <properties>
         <java.version>17</java.version>
+        <postgresqlaiven.version>42.3.2</postgresqlaiven.version>
     </properties>
     <dependencies>
         <dependency>
@@ -55,7 +56,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.3.2</version>
+            <version>${postgresqlaiven.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

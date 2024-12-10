@@ -1,9 +1,10 @@
 package com.hospitallentesboulevard.opticaadmin.dao;
 
-import com.hospitallentesboulevard.opticaadmin.model.Patient;
+import com.hospitallentesboulevard.opticaadmin.payload.PatientView;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
-public interface PatientRepository extends JpaRepository<Patient, String> {
+public interface PatientViewRepository extends JpaRepository<PatientView, String> {
 }

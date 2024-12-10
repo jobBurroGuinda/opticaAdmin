@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="layouts/head :: header('Graduaciones')"> .. </div>
 <body>
-$END$
+<!--<h1 th:text="'Graduaciones del paciente ' + ${patient.getFullName()}"></h1>-->
+<!--<a th:href="@{/graduaciones/nueva/paciente/{patient_id}(patient_id=${patient.id})}">Create New Prescription</a>-->
+<table>
+    <tr>
+        <th>Right Eye</th>
+        <th>Left Eye</th>
+        <th>Add</th>
+        <th>Observaciones</th>
+        <th>Fecha de creación</th>
+        <th>Fecha de última actualización</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="prescription : ${prescriptions}">
+        <td th:text="${prescription.rightEye}"></td>
+        <td th:text="${prescription.leftEye}"></td>
+        <td th:text="${prescription.add}"></td>
+        <td th:text="${prescription.observations}"></td>
+        <td th:text="${#dates.format(prescription.dateCreation, 'yyyy-MM-dd')}"></td>
+        <td th:text="${#dates.format(prescription.dateLastUpdate, 'yyyy-MM-dd')}"></td>
+        <td>
+            <a th:href="@{/graduaciones/{id}/editar(id=${prescription.id})}">Edit</a>
+            <a th:href="@{/graduaciones/{id}/eliminar(id=${prescription.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+
+<div th:replace="layouts/scripts :: scripts"></div>
 </body>
 </html>
