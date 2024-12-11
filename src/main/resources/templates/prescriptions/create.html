@@ -2,18 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:replace="layouts/head :: header('Nueva graduación')"> .. </div>
 <body>
+<br>
+<a th:href="@{/}"><h2>Regresar al inicio</h2></a>
+<br/>
 <h1 th:text="'Agregar graduación para el paciente ' + ${prescription.patient.getFullName()}"></h1>
 <form action="#" th:action="@{/graduaciones}" th:object="${prescription}" method="post">
-    <label>Right Eye:</label>
+    <label>Ojo Derecho:</label>
     <input type="text" th:field="*{rightEye}"/>
-    <label>Left Eye:</label>
+    <label>Ojo Izquierdo:</label>
     <input type="text" th:field="*{leftEye}"/>
-    <label>Add:</label>
+    <label>Adición:</label>
     <input type="text" th:field="*{add}"/>
-    <label for="observations">Description:</label>
+    <label for="observations">Observaciones:</label>
     <textarea id="observations" name="observations" rows="4" cols="50" th:field="*{observations}"></textarea>
     <input type="hidden" th:field="*{patient.id}" required/>
-    <button type="submit">Save</button>
+    <button type="submit">Guardar</button>
 </form>
 
 <div th:replace="layouts/scripts :: scripts"></div>

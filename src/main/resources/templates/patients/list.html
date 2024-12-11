@@ -6,10 +6,14 @@
   <a th:href="@{/}"><h2>Regresar al inicio</h2></a>
   <br/>
     <h1>Pacientes</h1>
-    <a th:href="@{/nuevo}">Registrar nuevo paciente</a>
+    <a th:href="@{/nuevo}">Registrar nuevo paciente</a><br/>
+  <div th:if="${#lists.isEmpty(patients)}">
+    <h3>Aún no se han registrado pacientes. <a th:href="@{/nuevo}">Registre uno</a></h3>
+  </div>
+  <div th:if="${not #lists.isEmpty(patients)}">
     <form th:action="@{/buscar}" method="get"><br>
-      <label for="inputFindNamePatient">Buscar paciente</label>
-      <input type="text" name="inputFindNamePatient" id="inputFindNamePatient" />
+      <label for="valor">Buscar paciente (por nombre, apellido, u observaciones)</label>
+      <input type="text" name="valor" id="valor" />
       <button type="submit">Buscar</button>
     </form>
     <table>
@@ -28,13 +32,14 @@
           <td th:text="${patient.add}"></td>
           <td th:text="${patient.observations}"></td>
           <td>
-            <a th:href="@{/graduaciones/{prescriptionId}/editar(prescriptionId=${patient.prescriptionId})}">Editar graduación</a>
-            <a th:href="@{/graduaciones/nueva/paciente/{id}(id=${patient.id})}">Nueva graduación</a>
-            <a th:href="@{/graduaciones/paciente/{id}(id=${patient.id})}">Historial</a>
-            <a th:href="@{/{id}/editar(id=${patient.id})}">Editar paciente</a>
+            <a th:href="@{/graduaciones/{prescriptionId}/editar(prescriptionId=${patient.prescriptionId})}"><button>Editar graduación</button></a>
+            <a th:href="@{/graduaciones/nueva/paciente/{id}(id=${patient.id})}"><button>Nueva graduación</button></a>
+            <a th:href="@{/graduaciones/paciente/{id}(id=${patient.id})}"><button>Historial</button></a>
+            <a th:href="@{/{id}/editar(id=${patient.id})}"><button>Editar paciente</button></a>
           </td>
         </tr>
     </table>
+  </div>
 
     <div th:replace="layouts/scripts :: scripts"></div>
   </body>

@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="layouts/head :: header('Editar paciente')"> .. </div>
 <body>
 <br>
 <a th:href="@{/}"><h2>Regresar al inicio</h2></a>
 <br/>
-<h1>Edit Patient</h1>
+<h1>Editar paciente</h1>
 <form action="#" th:action="@{/actualizar/{id}(id=${patient.id})}" th:object="${patient}" method="post">
-  <label>Name:</label>
+  <label>Nombre:</label>
   <input type="text" th:field="*{name}" required/>
-  <label>Last Name:</label>
+  <label>Apellidos:</label>
   <input type="text" th:field="*{lastName}" required/>
-  <label>Gender:</label>
-  <input type="text" th:field="*{gender}" required/>
-  <label>Phone Number:</label>
-  <input type="text" th:field="*{phoneNumber}"/>
+  <label for="gender">Sexo:</label>
+  <select id="gender" th:field="*{gender}">
+    <option value="N">No especificado</option>
+    <option value="M">Masculino</option>
+    <option value="F">Femenino</option>
+  </select>
+  <label>Teléfono:</label>
+  <input type="tel" th:field="*{phoneNumber}"/>
   <label>Email:</label>
   <input type="email" th:field="*{email}"/>
-  <button type="submit">Update</button>
+  <button type="submit">Actualizar</button>
 </form>
-<a th:href="@{/}">Cancel</a>
+<a th:href="@{/}">Cancelar</a>
 
 <div th:replace="layouts/scripts :: scripts"></div>
 </body>

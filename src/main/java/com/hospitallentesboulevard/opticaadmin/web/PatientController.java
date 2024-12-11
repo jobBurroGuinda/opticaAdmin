@@ -3,6 +3,7 @@ package com.hospitallentesboulevard.opticaadmin.web;
 import com.hospitallentesboulevard.opticaadmin.business.PatientBusiness;
 import com.hospitallentesboulevard.opticaadmin.model.Patient;
 import com.hospitallentesboulevard.opticaadmin.payload.PatientView;
+import com.hospitallentesboulevard.opticaadmin.payload.request.PatientWithPrescription;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +27,7 @@ public class PatientController {
     }
 
     @GetMapping("/buscar")
-    public String findByNameOrLastName(@RequestParam("inputFindNamePatient") String name, Model model){
+    public String findByNameOrLastName(@RequestParam("valor") String name, Model model){
         List<PatientView> patients;
         if (name.isBlank() || name.isEmpty()) {
             patients = patientBusiness.findAllPatientView();
@@ -40,14 +41,13 @@ public class PatientController {
 
     @GetMapping("/nuevo")
     public String createPatientForm(Model model) {
-        model.addAttribute("patient", new Patient());
+        model.addAttribute("patientWithPrescription", new PatientWithPrescription());
         return "patients/create";
     }
 
     @PostMapping
-    public String savePatient(@ModelAttribute Patient patient) {
-        patient.setId(UUID.randomUUID().toString());
-        patientBusiness.save(patient);
+    public String savePatient(@ModelAttribute PatientWithPrescription patientWithPrescription) {
+        patientBusiness.save(patientWithPrescription);
         return "redirect:/";
     }
 

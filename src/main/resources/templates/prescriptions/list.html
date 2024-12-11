@@ -1,36 +1,40 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="layouts/head :: header('Graduaciones')"> .. </div>
 <body>
 <br>
 <a th:href="@{/}"><h2>Regresar al inicio</h2></a>
 <br/>
-<!--<h1 th:text="'Graduaciones del paciente ' + ${patient.getFullName()}"></h1>-->
+<h1 th:text="'Graduaciones del paciente ' + ${patient.getFullName()}"></h1>
+<a th:href="@{/graduaciones/nueva/paciente/{patient_id}(patient_id=${patient.id})}">Registrar nueva</a>
 <!--<a th:href="@{/graduaciones/nueva/paciente/{patient_id}(patient_id=${patient.id})}">Create New Prescription</a>-->
-<table>
-    <tr>
-        <th>Right Eye</th>
-        <th>Left Eye</th>
-        <th>Add</th>
-        <th>Observaciones</th>
-        <th>Fecha de creación</th>
-        <th>Fecha de última actualización</th>
-        <th>Actions</th>
-    </tr>
-    <tr th:each="prescription : ${prescriptions}">
-        <td th:text="${prescription.rightEye}"></td>
-        <td th:text="${prescription.leftEye}"></td>
-        <td th:text="${prescription.add}"></td>
-        <td th:text="${prescription.observations}"></td>
-        <td th:text="${#dates.format(prescription.dateCreation, 'yyyy-MM-dd')}"></td>
-        <td th:text="${#dates.format(prescription.dateLastUpdate, 'yyyy-MM-dd')}"></td>
-        <td>
-            <a th:href="@{/graduaciones/{id}/editar(id=${prescription.id})}">Edit</a>
-            <a th:href="@{/graduaciones/{id}/eliminar(id=${prescription.id})}">Delete</a>
-        </td>
-    </tr>
-</table>
-
+<div th:if="${#lists.isEmpty(prescriptions)}">
+    <h3>Aún no se han registrado graduaciones para este paciente. <a th:href="@{/graduaciones/nueva/paciente/{patient_id}(patient_id=${patient.id})}">Registre una</a></h3>
+</div>
+<div th:if="${not #lists.isEmpty(prescriptions)}">
+    <table>
+        <tr>
+            <th>Ojo Derecho</th>
+            <th>Ojo Izquierdo</th>
+            <th>Adición</th>
+            <th>Observaciones</th>
+            <th>Fecha de registro</th>
+            <th>Fecha de última actualización</th>
+            <th>Acciones</th>
+        </tr>
+        <tr th:each="prescription : ${prescriptions}">
+            <td th:text="${prescription.rightEye}"></td>
+            <td th:text="${prescription.leftEye}"></td>
+            <td th:text="${prescription.add}"></td>
+            <td th:text="${prescription.observations}"></td>
+            <td th:text="${#dates.format(prescription.dateCreation, 'yyyy-MM-dd')}"></td>
+            <td th:text="${#dates.format(prescription.dateLastUpdate, 'yyyy-MM-dd')}"></td>
+            <td>
+                <a th:href="@{/graduaciones/{id}/editar(id=${prescription.id})}">Editar</a>
+            </td>
+        </tr>
+    </table>
+</div>
 <div th:replace="layouts/scripts :: scripts"></div>
 </body>
 </html>

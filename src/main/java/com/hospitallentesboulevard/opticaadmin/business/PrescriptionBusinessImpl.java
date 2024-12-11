@@ -27,10 +27,9 @@ public class PrescriptionBusinessImpl implements PrescriptionBusiness {
 
     @Override
     public List<Prescription> findAll(String idPatient) {
-        Patient patient = patientRepository.findById(idPatient).orElse(null);
-        Optional<List<Prescription>> prescriptions = prescriptionRepository.findAllByPatient(patient);
-        if (prescriptions.isPresent()) {
-            return prescriptions.get();
+        List<Prescription> prescriptions = prescriptionRepository.findAllByPatientOrOrder(idPatient);
+        if (!prescriptions.isEmpty()) {
+            return prescriptions;
         }
         return List.of();
     }

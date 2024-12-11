@@ -1,23 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="layouts/head :: header('Nuevo paciente')"> .. </div>
 <body>
 <br>
 <a th:href="@{/}"><h2>Regresar al inicio</h2></a>
 <br/>
-<h1>Create Patient</h1>
-<form action="#" th:action="@{/}" th:object="${patient}" method="post">
-  <label>Name:</label>
+<h1>Nuevo paciente</h1>
+<form action="#" th:action="@{/}" th:object="${patientWithPrescription}" method="post">
+  <label>Nombre:</label>
   <input type="text" th:field="*{name}" required/>
-  <label>Last Name:</label>
+  <label>Apellidos:</label>
   <input type="text" th:field="*{lastName}" required/>
-  <label>Gender:</label>
-  <input type="text" th:field="*{gender}" required/>
-  <label>Phone Number:</label>
-  <input type="text" th:field="*{phoneNumber}"/>
+  <label for="gender">Sexo:</label>
+  <select id="gender" th:field="*{gender}">
+    <option value="N">No especificado</option>
+    <option value="M">Masculino</option>
+    <option value="F">Femenino</option>
+  </select>
+  <label>Teléfono:</label>
+  <input type="tel" th:field="*{phoneNumber}"/>
   <label>Email:</label>
   <input type="email" th:field="*{email}"/>
-  <button type="submit">Save</button>
+  <label>Ojo Derecho:</label>
+  <input type="text" th:field="*{rightEye}"/>
+  <label>Ojo Izquierdo:</label>
+  <input type="text" th:field="*{leftEye}"/>
+  <label>Adición:</label>
+  <input type="text" th:field="*{add}"/>
+  <label for="observations">Observaciones:</label>
+  <textarea id="observations" name="observations" rows="4" cols="50" th:field="*{observations}"></textarea>
+  <button type="submit">Registrar</button>
 </form>
 
 <div th:replace="layouts/scripts :: scripts"></div>
